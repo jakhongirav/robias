@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full flex justify-between">
+      <header className="relative w-full flex justify-between p-[30px_100px] items-center">
         <Link href="/">
           <Image
             src="/img/_RB.png"
@@ -28,35 +28,33 @@ export default function Header() {
         </Link>
 
         <nav className="">
-          <ul className="flex grow justify-center flex-wrap items-center">
-            <nav className="flex items-center gap-12">
-              {ROUTES.map((route) => {
-                if (route.path !== activePage) {
-                  return (
-                    <Link href={route.path} key={route.id}>
-                      <span className="navLink cursor-pointer">
-                        {route.name}
-                      </span>
-                    </Link>
-                  );
-                }
-              })}
-              <Link href="/ru" className="navLink">
-                En|Uz
-              </Link>
-            </nav>
-          </ul>
+          <nav className="flex justify-center items-center gap-12">
+            {ROUTES.map((route) => {
+              if (route.path !== activePage) {
+                return (
+                  <Link href={route.path} key={route.id}>
+                    <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
+                      {route.name}
+                    </span>
+                  </Link>
+                );
+              }
+            })}
+            <Link href="/ru" className="navLink">
+              En|Uz
+            </Link>
+          </nav>
         </nav>
-      </header>
 
-      <p
-        className={cn(
-          buttonVariants(),
-          "absolute top-0 left-1/2 transform -translate-x-1/2 p-[15px_35px] hover:bg-primary"
-        )}
-      >
-        {getPageName(activePage)}
-      </p>
+        <p
+          className={cn(
+            buttonVariants(),
+            "absolute top-[29%] left-1/2 transform -translate-x-1/2 p-[15px_35px] hover:bg-primary text-3xl font-normal"
+          )}
+        >
+          {getPageName(activePage)}
+        </p>
+      </header>
     </>
   );
 }
