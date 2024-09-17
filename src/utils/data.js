@@ -10,17 +10,17 @@ export const ROUTES = [
     path: "/about",
   },
   {
-    id: 2,
+    id: 3,
     name: "Blog",
     path: "/blog",
   },
   {
-    id: 3,
+    id: 4,
     name: "Portfolio",
     path: "/portfolio",
   },
   {
-    id: 4,
+    id: 5,
     name: "Contact me",
     path: "/contact",
   },

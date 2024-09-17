@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative w-full flex justify-between sm:p-[30px] lg:p-[30px_100px] items-center">
+      <header className="relative w-full flex justify-between p-[30px] lg:p-[30px_100px] items-center">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -41,7 +41,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="relative">
+        <nav className="">
           {/* Laptop Nav menu */}
           <div className="hidden justify-center items-center lg:flex lg:gap-8 xl:gap-10 2xl:gap-12">
             {filteredRoutes.map((route) => (
@@ -57,30 +57,31 @@ export default function Header() {
           </div>
 
           {/* Mobile Nav Menu */}
-          <div className="md:relative lg:hidden">
+          <div className="lg:hidden">
             <div onClick={toggleNav} className="cursor-pointer">
               <Image
+                className="transition-all duration-300 ease-in-out"
                 src={isNavOpen ? "/img/x.png" : "/img/nav.png"}
                 alt="robias"
                 width={20}
-                height={15}
+                height={20}
               />
             </div>
             <div
-              className={
+              className={`absolute right-0 top-[100%] w-full md:w-40 bg-white p-5 flex flex-col items-end gap-[30px] md:gap-5 transition-transform transform origin-top ${
                 isNavOpen
-                  ? "absolute md:w-full flex flex-col gap-[30px] bg-white p-5"
-                  : "hidden"
-              }
+                  ? "scale-y-100 opacity-100"
+                  : "scale-y-0 opacity-0 pointer-events-none"
+              } duration-300 ease-in-out`}
             >
               {filteredRoutes.map((route) => (
                 <Link href={route.path} key={route.id}>
-                  <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
+                  <span className="cursor-pointer text-black lg:opacity-[50%] font-normal text-[22px] lg:text-xl hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition-opacity duration-200 ease-in-out">
                     {route.name}
                   </span>
                 </Link>
               ))}
-              <Link href="/ru" className="navLink">
+              <Link href="/ru" className="font-normal text-black text-[24px]">
                 En|Uz
               </Link>
             </div>
@@ -91,7 +92,7 @@ export default function Header() {
         <p
           className={cn(
             buttonVariants(),
-            "absolute top-[29%] left-1/2 transform -translate-x-1/2 p-[15px_35px] hover:bg-primary text-3xl font-normal"
+            "absolute top-[29%] left-1/2 transform -translate-x-1/2 p-[15px_35px] hover:bg-primary text-[20px] sm:text-3xl  font-normal"
           )}
         >
           {getPageName(activePage)}
