@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const helvetica = localFont({
   src: [
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
       <body className={`${helvetica.variable} antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

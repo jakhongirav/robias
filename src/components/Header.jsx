@@ -43,7 +43,7 @@ export default function Header() {
 
         <nav className="">
           {/* Laptop Nav menu */}
-          <div className="hidden justify-center items-center lg:flex lg:gap-8 xl:gap-10 2xl:gap-12">
+          <div className="hidden justify-center items-center lg:flex lg:gap-[25px]">
             {filteredRoutes.map((route) => (
               <Link href={route.path} key={route.id}>
                 <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
@@ -68,7 +68,7 @@ export default function Header() {
               />
             </div>
             <div
-              className={`absolute right-0 top-[100%] w-full md:w-40 bg-white p-5 flex flex-col items-end gap-[30px] md:gap-5 transition-transform transform origin-top ${
+              className={`absolute right-0 top-[100%] w-full md:w-40 z-10 bg-white p-5 flex flex-col items-end gap-[30px] md:gap-5 transition-transform transform origin-top ${
                 isNavOpen
                   ? "scale-y-100 opacity-100"
                   : "scale-y-0 opacity-0 pointer-events-none"
