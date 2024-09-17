@@ -6,6 +6,11 @@ export const ROUTES = [
   },
   {
     id: 2,
+    name: "About me",
+    path: "/about",
+  },
+  {
+    id: 2,
     name: "Blog",
     path: "/blog",
   },

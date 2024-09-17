@@ -2,21 +2,35 @@
 
 import { ROUTES } from "@/utils/data";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { buttonVariants } from "./ui/button";
 
 export default function Header() {
-  const [onFocus, setOnFocus] = useState(false);
   const activePage = usePathname();
+
+  // Mobile Nav MenuFunc
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  // Toggle navigation menu
+  const toggleNav = () => setIsNavOpen((prev) => !prev);
+
+  // Get current page name
   const getPageName = (pathname) =>
-    ROUTES.filter((route) => route.path === pathname)[0]?.name ?? "Not Found";
+    ROUTES.find((route) => route.path === pathname)?.name || "Not Found";
+
+  // Memoize filtered routes to prevent unnecessary recalculation
+  const filteredRoutes = useMemo(
+    () => ROUTES.filter((route) => route.path !== activePage),
+    [activePage]
+  );
 
   return (
     <>
-      <header className="relative w-full flex justify-between p-[30px_100px] items-center">
+      <header className="relative w-full flex justify-between sm:p-[30px] lg:p-[30px_100px] items-center">
+        {/* Logo */}
         <Link href="/">
           <Image
             src="/img/_RB.png"
@@ -27,25 +41,53 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="">
-          <nav className="flex justify-center items-center gap-12">
-            {ROUTES.map((route) => {
-              if (route.path !== activePage) {
-                return (
-                  <Link href={route.path} key={route.id}>
-                    <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
-                      {route.name}
-                    </span>
-                  </Link>
-                );
-              }
-            })}
+        <nav className="relative">
+          {/* Laptop Nav menu */}
+          <div className="hidden justify-center items-center lg:flex lg:gap-8 xl:gap-10 2xl:gap-12">
+            {filteredRoutes.map((route) => (
+              <Link href={route.path} key={route.id}>
+                <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
+                  {route.name}
+                </span>
+              </Link>
+            ))}
             <Link href="/ru" className="navLink">
               En|Uz
             </Link>
-          </nav>
+          </div>
+
+          {/* Mobile Nav Menu */}
+          <div className="md:relative lg:hidden">
+            <div onClick={toggleNav} className="cursor-pointer">
+              <Image
+                src={isNavOpen ? "/img/x.png" : "/img/nav.png"}
+                alt="robias"
+                width={20}
+                height={15}
+              />
+            </div>
+            <div
+              className={
+                isNavOpen
+                  ? "absolute md:w-full flex flex-col gap-[30px] bg-white p-5"
+                  : "hidden"
+              }
+            >
+              {filteredRoutes.map((route) => (
+                <Link href={route.path} key={route.id}>
+                  <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
+                    {route.name}
+                  </span>
+                </Link>
+              ))}
+              <Link href="/ru" className="navLink">
+                En|Uz
+              </Link>
+            </div>
+          </div>
         </nav>
 
+        {/* Current Page Name */}
         <p
           className={cn(
             buttonVariants(),
