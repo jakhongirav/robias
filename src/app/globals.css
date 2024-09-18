@@ -2,6 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Regular 400 */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Bold 700 */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Oblique Regular 400 */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Oblique.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Bold Oblique 700 */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-BoldOblique.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Light 300 */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/helvetica-light-587ebe5a59211.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Rounded Bold 700 */
+@font-face {
+  font-family: "Helvetica Rounded";
+  src: url("/fonts/helvetica-rounded-bold-5871d05ead8de.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Compressed 900 */
+@font-face {
+  font-family: "Helvetica Compressed";
+  src: url("/fonts/helvetica-compressed-5871d14b6903a.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -10,7 +66,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica", Arial, sans-serif;
 }
 
 @layer utilities {

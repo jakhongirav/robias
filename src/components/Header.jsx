@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative w-full flex justify-between p-[30px] lg:p-[30px_100px] items-center">
+      <header className="relative w-full flex justify-between p-[30px] lg:p-[40px_100px] items-center">
         {/* Logo */}
         <Link href="/">
           <Image
@@ -43,15 +43,18 @@ export default function Header() {
 
         <nav className="">
           {/* Laptop Nav menu */}
-          <div className="hidden justify-center items-center lg:flex lg:gap-[25px]">
+          <div className="hidden justify-center items-center lg:flex lg:gap-[25px] xl:gap-[50px]">
             {filteredRoutes.map((route) => (
               <Link href={route.path} key={route.id}>
-                <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out">
+                <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out 2xl:text-[25px]">
                   {route.name}
                 </span>
               </Link>
             ))}
-            <Link href="/ru" className="navLink">
+            <Link
+              href="/ru"
+              className="font-normal text-black text-[24px] 2xl:text-[25px]"
+            >
               En|Uz
             </Link>
           </div>
@@ -81,7 +84,10 @@ export default function Header() {
                   </span>
                 </Link>
               ))}
-              <Link href="/ru" className="font-normal text-black text-[24px]">
+              <Link
+                href="/ru"
+                className="font-normal text-black text-[24px] 2xl:text-[25px]"
+              >
                 En|Uz
               </Link>
             </div>
@@ -89,12 +95,7 @@ export default function Header() {
         </nav>
 
         {/* Current Page Name */}
-        <p
-          className={cn(
-            buttonVariants(),
-            "absolute top-[29%] left-1/2 transform -translate-x-1/2 p-[15px_35px] hover:bg-primary text-[20px] sm:text-3xl  font-normal"
-          )}
-        >
+        <p className="absolute top-[22%] left-1/2 text-white transform -translate-x-1/2 p-[15px_35px] text-[20px] sm:text-3xl  font-normal rounded-[50px] bg-black">
           {getPageName(activePage)}
         </p>
       </header>

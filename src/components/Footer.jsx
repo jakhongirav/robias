@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer class="fixed flex flex-col items-center gap-[30px] sm:block bottom-0 w-full p-[30px] lg:p-[30px_100px]">
+    <footer class="fixed bg-white z-10 flex flex-col items-center gap-[30px] sm:block bottom-0 w-full p-[30px] lg:p-[30px_100px]">
+      {/* Socials for mobile */}
       <div className="flex sm:hidden gap-[30px] items-center">
         <Link href="/">
           <svg
@@ -50,6 +51,7 @@ export default function Footer() {
           </svg>
         </Link>
       </div>
+      {/* Footer main part */}
       <div className="flex justify-between items-center w-full">
         <p className="font-normal text-[16px] text-black opacity-[50%] ">
           © 2024 robiya.com
