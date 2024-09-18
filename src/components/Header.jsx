@@ -95,7 +95,7 @@ export default function Header() {
         </nav>
 
         {/* Current Page Name */}
-        <p className="absolute top-[22%] left-1/2 text-white transform -translate-x-1/2 p-[15px_35px] text-[20px] sm:text-3xl  font-normal rounded-[50px] bg-black">
+        <p className="absolute top-[20%] sm:top-[22%] left-1/2 text-white transform -translate-x-1/2 p-[15px_35px] text-[20px] sm:text-3xl  font-normal rounded-[50px] bg-black">
           {getPageName(activePage)}
         </p>
       </header>
