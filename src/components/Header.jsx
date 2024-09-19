@@ -41,9 +41,9 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="">
+        <nav>
           {/* Laptop Nav menu */}
-          <div className="hidden justify-center items-center lg:flex lg:gap-[25px] xl:gap-[50px]">
+          <div className="hidden justify-center items-center lg:flex lg:gap-[25px] xl:gap-[35px]">
             {filteredRoutes.map((route) => (
               <Link href={route.path} key={route.id}>
                 <span className="cursor-pointer text-black opacity-[50%] font-normal hover:opacity-100 hover:border-b-[1px] border-b-secondary pb-[7px] transition ease-in-out 2xl:text-[25px]">
